@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		87F755B01D8A7F7E0089FAB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F755AF1D8A7F7E0089FAB3 /* AppDelegate.swift */; };
-		87F755B21D8A7F7E0089FAB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F755B11D8A7F7E0089FAB3 /* ViewController.swift */; };
 		87F755B51D8A7F7E0089FAB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F755B31D8A7F7E0089FAB3 /* Main.storyboard */; };
 		87F755B71D8A7F7E0089FAB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87F755B61D8A7F7E0089FAB3 /* Assets.xcassets */; };
 		87F755BA1D8A7F7E0089FAB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F755B81D8A7F7E0089FAB3 /* LaunchScreen.storyboard */; };
+		87F755C81D8A82710089FAB3 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F755C71D8A82710089FAB3 /* DefaultsManager.swift */; };
+		87F755CA1D8A82D10089FAB3 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F755C91D8A82D10089FAB3 /* APIManager.swift */; };
+		87F755D01D8A93CD0089FAB3 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F755CF1D8A93CD0089FAB3 /* Picture.swift */; };
+		87F755D21D8A99A00089FAB3 /* PicturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F755D11D8A99A00089FAB3 /* PicturesCollectionViewController.swift */; };
+		87F755D51D8A99DF0089FAB3 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F755D41D8A99DF0089FAB3 /* PictureCollectionViewCell.swift */; };
+		87F755D71D8A9AC30089FAB3 /* PictureDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F755D61D8A9AC30089FAB3 /* PictureDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		87F755AC1D8A7F7E0089FAB3 /* TestPhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestPhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F755AF1D8A7F7E0089FAB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		87F755B11D8A7F7E0089FAB3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		87F755B41D8A7F7E0089FAB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87F755B61D8A7F7E0089FAB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87F755B91D8A7F7E0089FAB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87F755BB1D8A7F7E0089FAB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87F755C71D8A82710089FAB3 /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefaultsManager.swift; path = Classes/DefaultsManager.swift; sourceTree = "<group>"; };
+		87F755C91D8A82D10089FAB3 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Classes/APIManager.swift; sourceTree = "<group>"; };
+		87F755CF1D8A93CD0089FAB3 /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Picture.swift; path = Classes/Picture.swift; sourceTree = "<group>"; };
+		87F755D11D8A99A00089FAB3 /* PicturesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewController.swift; sourceTree = "<group>"; };
+		87F755D41D8A99DF0089FAB3 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
+		87F755D61D8A9AC30089FAB3 /* PictureDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +92,7 @@
 		87F755C31D8A817E0089FAB3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				87F755D31D8A99BB0089FAB3 /* Cells */,
 				87F755C51D8A81AA0089FAB3 /* ViewControllers */,
 				87F755C41D8A81970089FAB3 /* Storyboards */,
 			);
@@ -100,7 +111,8 @@
 		87F755C51D8A81AA0089FAB3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				87F755B11D8A7F7E0089FAB3 /* ViewController.swift */,
+				87F755D11D8A99A00089FAB3 /* PicturesCollectionViewController.swift */,
+				87F755D61D8A9AC30089FAB3 /* PictureDetailsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -108,8 +120,35 @@
 		87F755C61D8A81DC0089FAB3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				87F755CE1D8A93A80089FAB3 /* Models */,
+				87F755CD1D8A939F0089FAB3 /* Managers */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		87F755CD1D8A939F0089FAB3 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				87F755C71D8A82710089FAB3 /* DefaultsManager.swift */,
+				87F755C91D8A82D10089FAB3 /* APIManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		87F755CE1D8A93A80089FAB3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				87F755CF1D8A93CD0089FAB3 /* Picture.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		87F755D31D8A99BB0089FAB3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				87F755D41D8A99DF0089FAB3 /* PictureCollectionViewCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +183,7 @@
 				TargetAttributes = {
 					87F755AB1D8A7F7E0089FAB3 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 38RMNWSM28;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -184,8 +224,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87F755B21D8A7F7E0089FAB3 /* ViewController.swift in Sources */,
+				87F755D51D8A99DF0089FAB3 /* PictureCollectionViewCell.swift in Sources */,
+				87F755CA1D8A82D10089FAB3 /* APIManager.swift in Sources */,
+				87F755D01D8A93CD0089FAB3 /* Picture.swift in Sources */,
+				87F755C81D8A82710089FAB3 /* DefaultsManager.swift in Sources */,
 				87F755B01D8A7F7E0089FAB3 /* AppDelegate.swift in Sources */,
+				87F755D71D8A9AC30089FAB3 /* PictureDetailsViewController.swift in Sources */,
+				87F755D21D8A99A00089FAB3 /* PicturesCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +353,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 38RMNWSM28;
 				INFOPLIST_FILE = TestPhotoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.TestPhotoApp;
@@ -320,6 +366,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 38RMNWSM28;
 				INFOPLIST_FILE = TestPhotoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.TestPhotoApp;
@@ -347,6 +394,7 @@
 				87F755C01D8A7F7E0089FAB3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
