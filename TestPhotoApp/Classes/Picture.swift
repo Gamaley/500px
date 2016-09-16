@@ -41,10 +41,10 @@ final class Picture: Mappable {
 
 extension Picture {
     
-    static func getPictures(page: Int = 0, completion: APIManager.ArrayErrorClosure, failure: APIManager.ObjectErrorClosure ) {
+    static func getPictures(page: Int = 0, count: Int = 100, completion: APIManager.ArrayErrorClosure) {
         var url = APIManager.sharedManager.BaseURL
         url.appendContentsOf(APIManager.Route.popularPhotos.rawValue)
-        let params: [String : AnyObject] = ["page": page, "consumer_key": APIManager.sharedManager.ConsumerKey]
+        let params: [String : AnyObject] = ["page": page, "consumer_key": APIManager.sharedManager.ConsumerKey, "rpp" : count]
         
         Alamofire.request(.GET, url, parameters: params).validate().responseArray(keyPath: "photos") { (response: Response<[Picture], NSError>) in
             switch response.result {
@@ -56,8 +56,11 @@ extension Picture {
                     completion(items: [], error: nil)
                 }
             case .Failure:
-                print(APIManager.sharedManager.errorStringFromData(response.data!))
-                failure(error: APIManager.sharedManager.errorStringFromData(response.data!))
+                if let error = response.result.error {
+                   completion(items: [], error: error.localizedDescription)
+                } else {
+                   completion(items: [], error: "Unnown Error")
+                }
             }
         }
     }

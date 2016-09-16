@@ -27,7 +27,7 @@ public final class Paginator<T>: AsyncGeneratorType {
     
     //MARK: - Initializers
     
-    public init(startPage: Int = 1, count: Int = 20) {
+    public init(startPage: Int = 1, count: Int = 100) {
         self.previousPage = 0
         self.page = startPage
         self.count = count

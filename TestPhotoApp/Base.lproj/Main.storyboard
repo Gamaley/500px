@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aGB-Js-fJV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aGB-Js-fJV">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -27,7 +27,20 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="112" height="113"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GfA-xw-Wky"/>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="GfA-xw-Wky" secondAttribute="trailing" id="6Er-Vb-Yvt"/>
+                                    <constraint firstAttribute="bottom" secondItem="GfA-xw-Wky" secondAttribute="bottom" id="UjI-ib-dfj"/>
+                                    <constraint firstItem="GfA-xw-Wky" firstAttribute="leading" secondItem="O4j-QW-Sex" secondAttribute="leading" id="Wph-Ed-gh2"/>
+                                    <constraint firstItem="GfA-xw-Wky" firstAttribute="top" secondItem="O4j-QW-Sex" secondAttribute="top" id="Y4F-FS-QNk"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="pictureImageView" destination="GfA-xw-Wky" id="0Kd-HM-TOh"/>
+                                    <segue destination="2ck-hl-g5h" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="qju-7T-a0j"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -52,12 +65,24 @@
                     <view key="view" contentMode="scaleToFill" id="qyT-fo-U38">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TgQ-Hm-Ifg"/>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.69846443970000005" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TgQ-Hm-Ifg" secondAttribute="trailing" constant="50" id="5z3-62-EbJ"/>
+                            <constraint firstItem="usT-r5-3gi" firstAttribute="top" secondItem="TgQ-Hm-Ifg" secondAttribute="bottom" constant="130" id="CdD-RK-Xjt"/>
+                            <constraint firstItem="TgQ-Hm-Ifg" firstAttribute="top" secondItem="K7M-U4-ur8" secondAttribute="bottom" constant="120" id="GTL-Bp-9xL"/>
+                            <constraint firstItem="TgQ-Hm-Ifg" firstAttribute="leading" secondItem="qyT-fo-U38" secondAttribute="leading" constant="50" id="RTy-aB-7nr"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="TgQ-Hm-Ifg" id="xvj-R4-8VL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WKf-Uw-I34" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2380" y="36.431784107946029"/>
+            <point key="canvasLocation" x="2368.8000000000002" y="35.532233883058474"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aoM-Mk-DiS">

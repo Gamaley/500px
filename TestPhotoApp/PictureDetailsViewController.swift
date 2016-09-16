@@ -8,21 +8,22 @@
 
 import UIKit
 
-class PictureDetailsViewController: UIViewController {
+final class PictureDetailsViewController: UIViewController {
+    
+    @IBOutlet weak var imageView: UIImageView!
 
+    var picturesArray = [Picture]()
+    var picture: Picture?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupImageView()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func setupImageView() {
+        guard let picture = picture else { return }
+        guard let pictureUrlString = picture.imageURL, let url = NSURL(string: pictureUrlString) else { return }
+        imageView.sd_setImageWithURL(url)
     }
-    */
-
+    
 }

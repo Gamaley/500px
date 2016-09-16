@@ -20,7 +20,7 @@ final class APIManager: NSObject {
     }
     
     typealias ArrayErrorClosure = (items: [AnyObject], error: String?) -> Void
-    typealias ObjectErrorClosure = (error: String?) -> Void
+    typealias ObjectErrorClosure = (item: AnyObject, error: String?) -> Void
     
     func jsonFromData(data: NSData?) -> [String:AnyObject]? {
         guard let data = data else {
@@ -34,18 +34,6 @@ final class APIManager: NSObject {
             print(error)
         }
         return nil
-    }
-    
-    func errorStringFromData(data: NSData) -> String {
-        let errorString = ""
-        do {
-            if let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [String:AnyObject], let errorString = json["error"] where errorString is String {
-                return errorString as! String
-            }
-        } catch {
-            print(error)
-        }
-        return errorString
     }
     
 }

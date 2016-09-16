@@ -7,7 +7,24 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class PictureCollectionViewCell: UICollectionViewCell, CellIdentifiable {
     
+    //MARK: - IBOutlets
+    
+    @IBOutlet weak var pictureImageView: UIImageView!
+    
+    
+    //MARK: - Public Properties
+    
+    var picture: Picture? {
+        didSet {
+            guard let picture = picture else { return }
+            guard let pictureUrlString = picture.imageURL, let url = NSURL(string: pictureUrlString) else { return }
+            pictureImageView.sd_setImageWithURL(url)
+                
+        }
+    }
+
 }
