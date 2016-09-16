@@ -8,6 +8,6 @@
 
 import UIKit
 
-final class PictureCollectionViewCell: UICollectionViewCell {
+final class PictureCollectionViewCell: UICollectionViewCell, CellIdentifiable {
     
 }
