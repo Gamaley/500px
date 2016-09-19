@@ -42,12 +42,12 @@
                   moduleName = "TestPhotoApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/john/Desktop/Swift/TestPhotoApp/TestPhotoApp/Classes/Picture.swift"
-                  timestampString = "495720352.214627"
+                  timestampString = "495723532.86868"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "49"
                   endingLineNumber = "49"
-                  offsetFromSymbolStart = "516">
+                  offsetFromSymbolStart = "524">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -57,7 +57,7 @@
                   moduleName = "TestPhotoApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/john/Desktop/Swift/TestPhotoApp/TestPhotoApp/Classes/Picture.swift"
-                  timestampString = "495720352.217584"
+                  timestampString = "495723532.870657"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "50"
@@ -95,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
             endingLineNumber = "47"
-            landmarkName = "fetchNextPage(page:count:completion:)"
+            landmarkName = "fetchNextPage(_:count:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -106,7 +106,7 @@
                   moduleName = "TestPhotoApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/john/Desktop/Swift/TestPhotoApp/TestPhotoApp/PicturesCollectionViewController.swift"
-                  timestampString = "495720352.23043"
+                  timestampString = "495723532.880944"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "47"
@@ -121,7 +121,7 @@
                   moduleName = "TestPhotoApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/john/Desktop/Swift/TestPhotoApp/TestPhotoApp/PicturesCollectionViewController.swift"
-                  timestampString = "495720352.233583"
+                  timestampString = "495723532.882885"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "47"
@@ -137,13 +137,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TestPhotoApp/PicturesCollectionViewController.swift"
-            timestampString = "495720637.613178"
+            filePath = "TestPhotoApp/Classes/Picture.swift"
+            timestampString = "495723156.379507"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "collectionView(_:didSelectItemAtIndexPath:)"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "getPictureByID(id:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static TestPhotoApp.Picture.getPictureByID (Swift.Int, completion : (item : Swift.Optional&lt;Swift.AnyObject&gt;, error : Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "TestPhotoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/john/Desktop/Swift/TestPhotoApp/TestPhotoApp/Classes/Picture.swift"
+                  timestampString = "495723532.893329"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "588">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static TestPhotoApp.Picture.(getPictureByID (Swift.Int, completion : (item : Swift.Optional&lt;Swift.AnyObject&gt;, error : Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "TestPhotoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/john/Desktop/Swift/TestPhotoApp/TestPhotoApp/Classes/Picture.swift"
+                  timestampString = "495723532.895339"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "148">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestPhotoApp/Classes/Picture.swift"
+            timestampString = "495723329.080582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "getPictureByID(id:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -153,13 +201,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TestPhotoApp/PicturesCollectionViewController.swift"
-            timestampString = "495720637.613178"
+            filePath = "TestPhotoApp/Classes/Picture.swift"
+            timestampString = "495723335.729013"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "prepareForSegue(_:sender:)"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "getPictureByID(id:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

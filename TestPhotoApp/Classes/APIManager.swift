@@ -17,10 +17,11 @@ final class APIManager: NSObject {
     
     enum Route: String {
         case popularPhotos = "photos?feature=popular"
+        case photosByID = "photos/%ld"
     }
     
     typealias ArrayErrorClosure = (items: [AnyObject], error: String?) -> Void
-    typealias ObjectErrorClosure = (item: AnyObject, error: String?) -> Void
+    typealias ObjectErrorClosure = (item: AnyObject?, error: String?) -> Void
     
     func jsonFromData(data: NSData?) -> [String:AnyObject]? {
         guard let data = data else {

@@ -54,8 +54,15 @@ public final class PicturesCollectionViewController: UICollectionViewController 
     
     private func updateUserInterface(pictures: [Picture]) {
         isNewDataLoading = false
+        let lastIndex = dataSource.count
         dataSource += pictures
-        self.collectionView?.reloadData()
+        var indexPaths = [NSIndexPath]()
+        for i in lastIndex..<dataSource.count {
+            indexPaths.append(NSIndexPath(forItem: i, inSection: 0))
+        }
+      self.collectionView?.performBatchUpdates({ 
+        self.collectionView?.insertItemsAtIndexPaths(indexPaths)
+        }, completion: nil)
     }
     
     //MARK: - Navigation
@@ -63,14 +70,14 @@ public final class PicturesCollectionViewController: UICollectionViewController 
     public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let destinationViewController = segue.destinationViewController as? PictureDetailsViewController {
             guard let picture = (sender as? PictureCollectionViewCell)?.picture else { return }
-            destinationViewController.picture = picture
-            destinationViewController.picturesArray = dataSource
+            destinationViewController.pictureID = picture.id
+//            destinationViewController.picturesArray = dataSource
         }
     }
     
 }
 
-    //MARK: - UICollectionViewDelegate
+//MARK: - UICollectionViewDelegate
 
 extension PicturesCollectionViewController {
     
@@ -91,7 +98,7 @@ extension PicturesCollectionViewController {
 extension PicturesCollectionViewController {
     
     public override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        if (indexPath.row == self.dataSource.count - 1) {
+        if (indexPath.row == self.dataSource.count - 10) {
             if !isNewDataLoading {
                 paginator.next(fetchNextPage, onFinish: updateUserInterface)
             }
@@ -101,6 +108,21 @@ extension PicturesCollectionViewController {
     public override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
         
+    }
+    
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+extension PicturesCollectionViewController: UICollectionViewDelegateFlowLayout {
+
+    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        var width: CGFloat!
+        if UIDevice.currentDevice().orientation == .Portrait {
+           width = UIScreen.mainScreen().bounds.size.width/4
+        } else {
+            width = UIScreen.mainScreen().bounds.size.height/4
+        }
+        return CGSizeMake(width, width)
     }
 }
 

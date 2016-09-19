@@ -65,4 +65,31 @@ extension Picture {
         }
     }
     
+    static func getPictureByID(id: Int, completion: APIManager.ObjectErrorClosure) {
+        var url = APIManager.sharedManager.BaseURL
+        let endpoint = String(format: APIManager.Route.photosByID.rawValue, id)
+        url.appendContentsOf(endpoint)
+        let params: [String : AnyObject] = ["image_size" : 6, "consumer_key": APIManager.sharedManager.ConsumerKey]
+        
+        Alamofire.request(.GET, url, parameters: params).validate().responseObject(keyPath: "photo") { (response: Response<Picture, NSError>) in
+            switch response.result {
+            case .Success:
+                print(APIManager.sharedManager.jsonFromData(response.data))
+                if let picture = response.result.value {
+                    completion(item: picture, error: nil)
+                } else {
+                    completion(item: nil, error: nil)
+                }
+            case .Failure:
+                if let error = response.result.error {
+                    completion(item: nil, error: error.localizedDescription)
+                } else {
+                    completion(item: nil, error: "Unnown Error")
+                }
+
+            }
+        }
+        
+    }
+    
 }
