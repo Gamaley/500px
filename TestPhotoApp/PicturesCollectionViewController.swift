@@ -15,19 +15,18 @@ public final class PicturesCollectionViewController: UICollectionViewController 
     
     // MARK: - Private Properties
     
+    private let queueHandler = OperationQueueHandler()
+    
     private var dataSource: [Picture] = []
     private var isNewDataLoading = false
     private var paginator = Paginator<Picture>()
+    
     
     //MARK: - Lifecycle
 
     override public func viewDidLoad() {
         super.viewDidLoad()
         fetchPictures()
-    }
-    
-    public override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     //MARK: - Private Methods
@@ -54,15 +53,111 @@ public final class PicturesCollectionViewController: UICollectionViewController 
     
     private func updateUserInterface(pictures: [Picture]) {
         isNewDataLoading = false
-        let lastIndex = dataSource.count
         dataSource += pictures
-        var indexPaths = [NSIndexPath]()
-        for i in lastIndex..<dataSource.count {
-            indexPaths.append(NSIndexPath(forItem: i, inSection: 0))
+        collectionView?.reloadData()
+    }
+    
+    private func startOperationsForPicture(picture: Picture, indexPath: NSIndexPath) {
+        switch (picture.state) {
+        case .New:
+            download(picture, indexPath: indexPath)
+        case .Downloaded:
+            filter(picture, indexPath: indexPath)
+        case .Failed:
+            download(picture, indexPath: indexPath)
+        default:
+            return
         }
-      self.collectionView?.performBatchUpdates({ 
-        self.collectionView?.insertItemsAtIndexPaths(indexPaths)
-        }, completion: nil)
+    }
+    
+    private func download(picture: Picture, indexPath: NSIndexPath){
+        if let _ = queueHandler.downloadsInProgress[indexPath] {
+            return
+        }
+        
+        let downloader = ImadeDownloadOperation(picture: picture)
+        downloader.completionBlock = { [unowned downloader] in
+            if downloader.cancelled {
+                return
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.queueHandler.downloadsInProgress.removeValueForKey(indexPath)
+                self.collectionView!.reloadItemsAtIndexPaths([indexPath])
+            })
+        }
+        queueHandler.downloadsInProgress[indexPath] = downloader
+        queueHandler.downloadQueue.addOperation(downloader)
+    }
+    
+    private func filter(picture: Picture, indexPath: NSIndexPath) {
+        if let _ = queueHandler.filtrationsInProgress[indexPath] {
+            return
+        }
+        
+        let filterer = ImageFilterOperation(picture: picture)
+        filterer.completionBlock = { [unowned filterer] in
+            if filterer.cancelled {
+                return
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.queueHandler.filtrationsInProgress.removeValueForKey(indexPath)
+                self.collectionView!.reloadItemsAtIndexPaths([indexPath])
+            })
+        }
+        queueHandler.filtrationsInProgress[indexPath] = filterer
+        queueHandler.filtrationQueue.addOperation(filterer)
+    }
+    
+    
+    private func loadImagesForVisibleItems() {
+        
+        if let pathsArray = collectionView?.indexPathsForVisibleItems() {
+            var allqueueOperations = Set(queueHandler.downloadsInProgress.keys)
+            allqueueOperations.unionInPlace(queueHandler.filtrationsInProgress.keys)
+            
+            var toBeCancelled = allqueueOperations
+            let visiblePaths = Set(pathsArray)
+            toBeCancelled.subtractInPlace(visiblePaths)
+            
+            var toBeStarted = visiblePaths
+            toBeStarted.subtractInPlace(allqueueOperations)
+            
+            for indexPath in toBeCancelled {
+                if let pendingDownload = queueHandler.downloadsInProgress[indexPath] {
+                    pendingDownload.cancel()
+                }
+                queueHandler.downloadsInProgress.removeValueForKey(indexPath)
+                if let pendingFiltration = queueHandler.filtrationsInProgress[indexPath] {
+                    pendingFiltration.cancel()
+                }
+                queueHandler.filtrationsInProgress.removeValueForKey(indexPath)
+            }
+            
+            for indexPath in toBeStarted {
+                let indexPath = indexPath as NSIndexPath
+                let pictureToProcess = dataSource[indexPath.item]
+                startOperationsForPicture(pictureToProcess, indexPath: indexPath)
+            }
+        }
+    }
+    
+    private func setupCell(cell: PictureCollectionViewCell, atIndexPath indexPath: NSIndexPath) {
+        let pictureObject = dataSource[indexPath.item]
+        guard let _ = pictureObject.imageURL else { return }
+        cell.image = pictureObject.image
+        cell.picture = pictureObject
+        
+        switch pictureObject.state {
+        case .Filtered:
+            cell.animateIndicator(false)
+        case .Failed:
+            cell.animateIndicator(false)
+        case .New, .Downloaded:
+            cell.animateIndicator(true)
+            if (!collectionView!.dragging && !collectionView!.decelerating) {
+                startOperationsForPicture(pictureObject, indexPath:indexPath)
+            }
+        }
     }
     
     //MARK: - Navigation
@@ -71,7 +166,6 @@ public final class PicturesCollectionViewController: UICollectionViewController 
         if let destinationViewController = segue.destinationViewController as? PictureDetailsViewController {
             guard let picture = (sender as? PictureCollectionViewCell)?.picture else { return }
             destinationViewController.pictureID = picture.id
-//            destinationViewController.picturesArray = dataSource
         }
     }
     
@@ -87,7 +181,7 @@ extension PicturesCollectionViewController {
     
     override public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PictureCollectionViewCell.identifier, forIndexPath: indexPath) as! PictureCollectionViewCell
-        cell.picture = dataSource[indexPath.item]
+        setupCell(cell, atIndexPath: indexPath)
         return cell
     }
 
@@ -96,23 +190,17 @@ extension PicturesCollectionViewController {
 //MARK: - UICollectionViewDelegate
 
 extension PicturesCollectionViewController {
-    
     public override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        if (indexPath.row == self.dataSource.count - 10) {
+        if (indexPath.row == dataSource.count - 10) {
             if !isNewDataLoading {
                 paginator.next(fetchNextPage, onFinish: updateUserInterface)
             }
         }
     }
-    
-    public override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
-        
-    }
-    
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
+
 extension PicturesCollectionViewController: UICollectionViewDelegateFlowLayout {
 
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -127,15 +215,23 @@ extension PicturesCollectionViewController: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: - UIScrollViewDelegate
-    
-//extension PicturesCollectionViewController {
 
-//    public override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        if (scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height {
-//            if !isNewDataLoading {
-//                paginator.next(fetchNextPage, onFinish: updateUserInterface)
-//            }
-//        }
-//    }
+extension PicturesCollectionViewController {
     
-//}
+    override public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        queueHandler.suspendAllOperations()
+    }
+    
+    override public func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            loadImagesForVisibleItems()
+            queueHandler.resumeAllOperations()
+        }
+    }
+    
+    override public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        loadImagesForVisibleItems()
+        queueHandler.resumeAllOperations()
+    }
+    
+}

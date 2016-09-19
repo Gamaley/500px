@@ -11,7 +11,13 @@ import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
 
+enum PictureState {
+    case New, Downloaded, Filtered, Failed
+}
+
 final class Picture: Mappable {
+    
+    //MARK: - Public Properties
     
     var id: Int?
     var name: String?
@@ -22,8 +28,14 @@ final class Picture: Mappable {
     var votesCount: Int?
     var commentsCount: Int?
     var imageURL: String?
+    var state = PictureState.New
+    var image = UIImage(named: "placeholder.png")
+    
+    //MARK: - Initializers
     
     required init?(_ map: Map) {}
+    
+    //MARK: - Public Methods
     
     func mapping(map: Map) {
         id              <- map["id"]

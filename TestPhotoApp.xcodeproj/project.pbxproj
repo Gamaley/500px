@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87163C8E1D8FE88600CEB7D7 /* OperationQueueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87163C8D1D8FE88600CEB7D7 /* OperationQueueHandler.swift */; };
+		87163C961D8FEB3400CEB7D7 /* ImadeDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87163C951D8FEB3400CEB7D7 /* ImadeDownloadOperation.swift */; };
+		87163C981D8FEBBB00CEB7D7 /* ImageFilterOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87163C971D8FEBBB00CEB7D7 /* ImageFilterOperation.swift */; };
 		87F755B01D8A7F7E0089FAB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F755AF1D8A7F7E0089FAB3 /* AppDelegate.swift */; };
 		87F755B51D8A7F7E0089FAB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F755B31D8A7F7E0089FAB3 /* Main.storyboard */; };
 		87F755B71D8A7F7E0089FAB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87F755B61D8A7F7E0089FAB3 /* Assets.xcassets */; };
@@ -26,6 +29,9 @@
 /* Begin PBXFileReference section */
 		4C59AB76F5003219ED9BC07A /* Pods_TestPhotoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestPhotoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		853DE521BD4C32A16B18D4DB /* Pods-TestPhotoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestPhotoApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestPhotoApp/Pods-TestPhotoApp.debug.xcconfig"; sourceTree = "<group>"; };
+		87163C8D1D8FE88600CEB7D7 /* OperationQueueHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OperationQueueHandler.swift; path = Classes/OperationQueueHandler.swift; sourceTree = "<group>"; };
+		87163C951D8FEB3400CEB7D7 /* ImadeDownloadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImadeDownloadOperation.swift; path = Classes/ImadeDownloadOperation.swift; sourceTree = "<group>"; };
+		87163C971D8FEBBB00CEB7D7 /* ImageFilterOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageFilterOperation.swift; path = Classes/ImageFilterOperation.swift; sourceTree = "<group>"; };
 		87F755AC1D8A7F7E0089FAB3 /* TestPhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestPhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F755AF1D8A7F7E0089FAB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87F755B41D8A7F7E0089FAB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -156,6 +162,9 @@
 				87F755CD1D8A939F0089FAB3 /* Managers */,
 				87F755DA1D8AEDDE0089FAB3 /* DateTransformer.swift */,
 				87F755E21D8BD7F70089FAB3 /* Paginator.swift */,
+				87163C8D1D8FE88600CEB7D7 /* OperationQueueHandler.swift */,
+				87163C951D8FEB3400CEB7D7 /* ImadeDownloadOperation.swift */,
+				87163C971D8FEBBB00CEB7D7 /* ImageFilterOperation.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -325,10 +334,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				87F755D51D8A99DF0089FAB3 /* PictureCollectionViewCell.swift in Sources */,
+				87163C961D8FEB3400CEB7D7 /* ImadeDownloadOperation.swift in Sources */,
 				87F755DB1D8AEDDE0089FAB3 /* DateTransformer.swift in Sources */,
 				87F755DE1D8BCF3A0089FAB3 /* UIViewController.swift in Sources */,
+				87163C981D8FEBBB00CEB7D7 /* ImageFilterOperation.swift in Sources */,
 				87F755CA1D8A82D10089FAB3 /* APIManager.swift in Sources */,
 				87F755D01D8A93CD0089FAB3 /* Picture.swift in Sources */,
+				87163C8E1D8FE88600CEB7D7 /* OperationQueueHandler.swift in Sources */,
 				87F755E11D8BD0A20089FAB3 /* CellIdentifiable.swift in Sources */,
 				87F755B01D8A7F7E0089FAB3 /* AppDelegate.swift in Sources */,
 				87F755D71D8A9AC30089FAB3 /* PictureDetailsViewController.swift in Sources */,

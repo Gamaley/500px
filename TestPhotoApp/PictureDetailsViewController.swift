@@ -12,12 +12,11 @@ final class PictureDetailsViewController: UIViewController {
     
     //MARK: - IBOutlets
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak private var scrollView: UIScrollView!
+    @IBOutlet weak private var imageView: UIImageView!
 
     //MARK: - Public Properties
     
-    var picturesArray = [Picture]()
     var pictureID: Int?
     
     //MARK: - Lifecycle

@@ -29,6 +29,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GfA-xw-Wky"/>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="XJf-jR-EZm"/>
                                     </subviews>
                                 </view>
                                 <constraints>
@@ -36,8 +37,11 @@
                                     <constraint firstAttribute="bottom" secondItem="GfA-xw-Wky" secondAttribute="bottom" id="UjI-ib-dfj"/>
                                     <constraint firstItem="GfA-xw-Wky" firstAttribute="leading" secondItem="O4j-QW-Sex" secondAttribute="leading" id="Wph-Ed-gh2"/>
                                     <constraint firstItem="GfA-xw-Wky" firstAttribute="top" secondItem="O4j-QW-Sex" secondAttribute="top" id="Y4F-FS-QNk"/>
+                                    <constraint firstItem="XJf-jR-EZm" firstAttribute="centerX" secondItem="GfA-xw-Wky" secondAttribute="centerX" id="unB-eo-vHo"/>
+                                    <constraint firstItem="XJf-jR-EZm" firstAttribute="centerY" secondItem="GfA-xw-Wky" secondAttribute="centerY" id="yLH-RM-a1c"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="indicatorView" destination="XJf-jR-EZm" id="VMN-II-05z"/>
                                     <outlet property="pictureImageView" destination="GfA-xw-Wky" id="0Kd-HM-TOh"/>
                                     <segue destination="2ck-hl-g5h" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="qju-7T-a0j"/>
                                 </connections>

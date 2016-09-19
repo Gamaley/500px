@@ -14,17 +14,32 @@ final class PictureCollectionViewCell: UICollectionViewCell, CellIdentifiable {
     //MARK: - IBOutlets
     
     @IBOutlet weak var pictureImageView: UIImageView!
-    
+    @IBOutlet weak private var indicatorView: UIActivityIndicatorView!
     
     //MARK: - Public Properties
     
-    var picture: Picture? {
+    var picture: Picture?
+    var image: UIImage? {
         didSet {
-            guard let picture = picture else { return }
-            guard let pictureUrlString = picture.imageURL, let url = NSURL(string: pictureUrlString) else { return }
-            pictureImageView.sd_setImageWithURL(url)
-                
+            guard let image = image else { return }
+            pictureImageView.image = image
         }
     }
 
+    //MARK: - Public Methods
+    
+    override func prepareForReuse() {
+        pictureImageView.image = UIImage.init(named: "placeholder.png")
+        indicatorView.hidden = false
+        image = nil
+    }
+    
+    func animateIndicator(start: Bool) {
+        indicatorView.hidden = !start
+        if start {
+            indicatorView.startAnimating()
+            return
+        }
+        indicatorView.stopAnimating()        
+    }
 }
