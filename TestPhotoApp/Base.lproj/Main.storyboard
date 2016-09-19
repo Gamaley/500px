@@ -30,18 +30,37 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GfA-xw-Wky"/>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="XJf-jR-EZm"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAb-wd-wqI">
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxE-Ks-3nZ">
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <color key="textColor" red="0.95506501677852351" green="0.94835360738255037" blue="0.9617764261744961" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="lxE-Ks-3nZ" firstAttribute="leading" secondItem="BAb-wd-wqI" secondAttribute="leading" constant="8" id="BJu-FK-rFx"/>
+                                                <constraint firstAttribute="bottom" secondItem="lxE-Ks-3nZ" secondAttribute="bottom" constant="8" id="hD0-q2-hAZ"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="GfA-xw-Wky" secondAttribute="trailing" id="6Er-Vb-Yvt"/>
+                                    <constraint firstAttribute="bottom" secondItem="BAb-wd-wqI" secondAttribute="bottom" id="Iyp-2E-xMy"/>
+                                    <constraint firstAttribute="trailing" secondItem="BAb-wd-wqI" secondAttribute="trailing" id="UB7-Qc-6ic"/>
                                     <constraint firstAttribute="bottom" secondItem="GfA-xw-Wky" secondAttribute="bottom" id="UjI-ib-dfj"/>
                                     <constraint firstItem="GfA-xw-Wky" firstAttribute="leading" secondItem="O4j-QW-Sex" secondAttribute="leading" id="Wph-Ed-gh2"/>
                                     <constraint firstItem="GfA-xw-Wky" firstAttribute="top" secondItem="O4j-QW-Sex" secondAttribute="top" id="Y4F-FS-QNk"/>
+                                    <constraint firstItem="BAb-wd-wqI" firstAttribute="top" secondItem="O4j-QW-Sex" secondAttribute="top" id="bBu-5L-jep"/>
+                                    <constraint firstItem="BAb-wd-wqI" firstAttribute="leading" secondItem="O4j-QW-Sex" secondAttribute="leading" id="qrf-b4-NMr"/>
                                     <constraint firstItem="XJf-jR-EZm" firstAttribute="centerX" secondItem="GfA-xw-Wky" secondAttribute="centerX" id="unB-eo-vHo"/>
                                     <constraint firstItem="XJf-jR-EZm" firstAttribute="centerY" secondItem="GfA-xw-Wky" secondAttribute="centerY" id="yLH-RM-a1c"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="indicatorView" destination="XJf-jR-EZm" id="VMN-II-05z"/>
+                                    <outlet property="likesCountLabel" destination="lxE-Ks-3nZ" id="x0C-pY-Gyb"/>
                                     <outlet property="pictureImageView" destination="GfA-xw-Wky" id="0Kd-HM-TOh"/>
                                     <segue destination="2ck-hl-g5h" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="qju-7T-a0j"/>
                                 </connections>
@@ -124,7 +143,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aGB-Js-fJV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iQq-uP-MCT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iQq-uP-MCT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.45882352939999999" green="0.46757982134630871" blue="0.45882352939999999" alpha="0.15439116379310344" colorSpace="calibratedRGB"/>

@@ -171,7 +171,7 @@ public final class PicturesCollectionViewController: UICollectionViewController 
     
 }
 
-//MARK: - UICollectionViewDelegate
+//MARK: - UICollectionViewDataSource
 
 extension PicturesCollectionViewController {
     
